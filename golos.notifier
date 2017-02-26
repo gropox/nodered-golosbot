@@ -1080,7 +1080,8 @@
          {
             "p" : "golos",
             "t" : "set",
-            "to" : "{\"account\":\"ropox\",\"chatId\":\"\",\"host\":\"https://golos.io/golos\"}",
+            "to" : "{\"account\":\"ropox\",\"
+            \":\"\",\"host\":\"https://golos.io/golos\"}",
             "pt" : "global",
             "tot" : "json"
          },
@@ -1096,7 +1097,7 @@
             "tot" : "str",
             "p" : "golos.chatId",
             "t" : "set",
-            "to" : "191909222"
+            "to" : ""
          },
          {
             "pt" : "global",
