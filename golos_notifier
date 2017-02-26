@@ -1,66 +1,69 @@
 [
    {
-      "out" : [
-         {
-            "y" : 168.000015258789,
-            "wires" : [
-               {
-                  "port" : 0,
-                  "id" : "264b0343.d7b8ec"
-               }
-            ],
-            "x" : 1065
-         }
-      ],
-      "id" : "698a5e08.63849",
-      "type" : "subflow",
       "in" : [
          {
-            "x" : 83,
             "y" : 97,
             "wires" : [
                {
                   "id" : "5951ba5b.baec94"
                }
-            ]
+            ],
+            "x" : 83
          }
       ],
+      "info" : "",
+      "id" : "698a5e08.63849",
       "name" : "History Filter",
-      "info" : ""
+      "out" : [
+         {
+            "wires" : [
+               {
+                  "id" : "264b0343.d7b8ec",
+                  "port" : 0
+               }
+            ],
+            "y" : 168.000015258789,
+            "x" : 1065
+         }
+      ],
+      "type" : "subflow"
    },
    {
+      "property" : "",
+      "to" : "",
+      "x" : 275.566650390625,
+      "y" : 165.566665649414,
       "wires" : [
          [
             "19f40add.e42aa5"
          ]
       ],
-      "type" : "change",
-      "action" : "",
-      "reg" : false,
-      "y" : 165.566665649414,
-      "x" : 275.566650390625,
-      "name" : "get result",
-      "from" : "",
-      "z" : "698a5e08.63849",
-      "id" : "5951ba5b.baec94",
       "rules" : [
          {
+            "p" : "payload",
             "pt" : "msg",
-            "tot" : "msg",
-            "t" : "set",
             "to" : "payload.result",
-            "p" : "payload"
+            "tot" : "msg",
+            "t" : "set"
          }
       ],
-      "property" : "",
-      "to" : ""
+      "id" : "5951ba5b.baec94",
+      "action" : "",
+      "type" : "change",
+      "reg" : false,
+      "from" : "",
+      "z" : "698a5e08.63849",
+      "name" : "get result"
    },
    {
+      "type" : "switch",
       "outputs" : 2,
-      "checkall" : "false",
-      "id" : "a886bc53.45e58",
-      "property" : "golos_lastId",
+      "name" : "Сменился ID?",
       "propertyType" : "global",
+      "z" : "698a5e08.63849",
+      "checkall" : "false",
+      "x" : 616.566650390625,
+      "property" : "golos_lastId",
       "rules" : [
          {
             "t" : "null"
@@ -71,8 +74,6 @@
             "v" : "payload[0]"
          }
       ],
-      "y" : 234.816665649414,
-      "type" : "switch",
       "wires" : [
          [
             "eae78143.9d532"
@@ -82,155 +83,152 @@
             "eae78143.9d532"
          ]
       ],
-      "z" : "698a5e08.63849",
-      "name" : "Сменился ID?",
-      "x" : 616.566650390625
+      "id" : "a886bc53.45e58",
+      "y" : 234.816665649414
    },
    {
-      "splt" : "\\n",
+      "x" : 453.899993896484,
       "id" : "19f40add.e42aa5",
-      "y" : 198.199996948242,
       "wires" : [
          [
             "a886bc53.45e58"
          ]
       ],
+      "y" : 198.199996948242,
       "type" : "split",
+      "name" : "",
       "z" : "698a5e08.63849",
-      "x" : 453.899993896484,
-      "name" : ""
+      "splt" : "\\n"
    },
    {
+      "name" : "get op",
+      "from" : "",
+      "z" : "698a5e08.63849",
+      "reg" : false,
+      "type" : "change",
+      "action" : "",
       "id" : "264b0343.d7b8ec",
-      "property" : "",
-      "to" : "",
       "rules" : [
          {
-            "pt" : "msg",
             "tot" : "msg",
+            "t" : "set",
             "p" : "payload",
             "to" : "payload[1].op",
-            "t" : "set"
+            "pt" : "msg"
          },
          {
-            "pt" : "msg",
-            "p" : "payload[1].host",
+            "tot" : "global",
             "t" : "set",
+            "p" : "payload[1].host",
             "to" : "golos.host",
-            "tot" : "global"
+            "pt" : "msg"
          }
       ],
-      "reg" : false,
-      "y" : 188.966690063477,
-      "type" : "change",
       "wires" : [
          []
       ],
-      "action" : "",
-      "from" : "",
-      "z" : "698a5e08.63849",
+      "y" : 188.966690063477,
       "x" : 865.900024414062,
-      "name" : "get op"
+      "to" : "",
+      "property" : ""
    },
    {
       "rules" : [
          {
-            "pt" : "global",
-            "tot" : "msg",
-            "p" : "golos_lastId",
             "to" : "payload[0]",
-            "t" : "set"
+            "pt" : "global",
+            "p" : "golos_lastId",
+            "t" : "set",
+            "tot" : "msg"
          }
       ],
-      "property" : "",
-      "to" : "",
-      "id" : "eae78143.9d532",
-      "x" : 886.566650390625,
-      "name" : "Сохранить ID в кэше",
-      "from" : "",
-      "z" : "698a5e08.63849",
       "wires" : [
          []
       ],
-      "type" : "change",
-      "action" : "",
+      "id" : "eae78143.9d532",
+      "y" : 306.566650390625,
+      "to" : "",
+      "x" : 886.566650390625,
+      "property" : "",
+      "name" : "Сохранить ID в кэше",
       "reg" : false,
-      "y" : 306.566650390625
+      "z" : "698a5e08.63849",
+      "from" : "",
+      "type" : "change",
+      "action" : ""
    },
    {
-      "name" : "comment",
-      "info" : "",
+      "type" : "subflow",
       "out" : [
          {
-            "x" : 1250,
-            "y" : 151,
             "wires" : [
                {
                   "port" : 0,
                   "id" : "e40bf02a.b1d94"
                }
-            ]
+            ],
+            "y" : 151,
+            "x" : 1250
          }
       ],
-      "id" : "e848a67.5dfd858",
-      "type" : "subflow",
       "in" : [
          {
-            "x" : 69,
             "y" : 141,
             "wires" : [
                {
                   "id" : "2c4db5ab.357e3a"
                }
-            ]
-         }
-      ]
-   },
-   {
-      "property" : "",
-      "to" : "",
-      "rules" : [
-         {
-            "tot" : "msg",
-            "to" : "payload[1]",
-            "t" : "set",
-            "p" : "payload",
-            "pt" : "msg"
-         },
-         {
-            "pt" : "msg",
-            "tot" : "global",
-            "p" : "payload.host",
-            "t" : "set",
-            "to" : "golos.host"
+            ],
+            "x" : 69
          }
       ],
-      "id" : "2c4db5ab.357e3a",
-      "from" : "",
-      "z" : "e848a67.5dfd858",
-      "x" : 288.75,
       "name" : "comment",
-      "reg" : false,
-      "y" : 119.75,
+      "info" : "",
+      "id" : "e848a67.5dfd858"
+   },
+   {
+      "id" : "2c4db5ab.357e3a",
+      "rules" : [
+         {
+            "p" : "payload",
+            "pt" : "msg",
+            "to" : "payload[1]",
+            "tot" : "msg",
+            "t" : "set"
+         }
+      ],
       "wires" : [
          [
             "ee430a46.1ad98"
          ]
       ],
+      "y" : 119.75,
+      "x" : 288.75,
+      "to" : "",
+      "property" : "",
+      "name" : "comment",
+      "z" : "e848a67.5dfd858",
+      "from" : "",
+      "reg" : false,
       "type" : "change",
       "action" : ""
    },
    {
       "checkall" : "false",
-      "outputs" : 2,
-      "id" : "ee430a46.1ad98",
+      "x" : 557.75,
       "property" : "payload.body",
-      "propertyType" : "msg",
+      "id" : "ee430a46.1ad98",
+      "wires" : [
+         [],
+         [
+            "a0fad3f6.d28298"
+         ]
+      ],
       "rules" : [
          {
+            "vt" : "str",
             "t" : "regex",
             "case" : false,
-            "vt" : "str",
             "v" : "^@@.*@@"
          },
          {
@@ -238,75 +236,70 @@
          }
       ],
       "y" : 70.75,
-      "wires" : [
-         [],
-         [
-            "a0fad3f6.d28298"
-         ]
-      ],
       "type" : "switch",
-      "z" : "e848a67.5dfd858",
-      "x" : 557.75,
-      "name" : "не редактирование"
+      "outputs" : 2,
+      "propertyType" : "msg",
+      "name" : "не редактирование",
+      "z" : "e848a67.5dfd858"
    },
    {
-      "id" : "e40bf02a.b1d94",
-      "field" : "payload",
-      "format" : "handlebars",
-      "y" : 205.75,
-      "syntax" : "mustache",
-      "wires" : [
-         []
-      ],
-      "template" : "<b>{{payload.author}}</b> оставил <a href=\"{{payload.host}}/@{{payload.author}}/{{payload.permlink}}\">комментарий</a>",
       "type" : "template",
+      "syntax" : "mustache",
+      "name" : "Коментарий",
       "fieldType" : "msg",
       "z" : "e848a67.5dfd858",
       "x" : 1081.75,
-      "name" : "Коментарий"
+      "template" : "<b>{{payload.author}}</b> оставил <a href=\"{{payload.host}}/@{{payload.author}}/{{payload.permlink}}\">комментарий</a>",
+      "format" : "handlebars",
+      "id" : "e40bf02a.b1d94",
+      "wires" : [
+         []
+      ],
+      "y" : 205.75,
+      "field" : "payload"
    },
    {
-      "type" : "function",
+      "func" : "msg.payload.body = msg.payload.body.replace(\"\\\\n\",\"\\n\");\nreturn msg;",
+      "x" : 852.166625976562,
+      "y" : 267.966644287109,
+      "id" : "6515f617.10e1",
       "wires" : [
          [
             "e40bf02a.b1d94"
          ]
       ],
-      "y" : 267.966644287109,
-      "x" : 852.166625976562,
-      "name" : "выправить текст",
-      "z" : "e848a67.5dfd858",
-      "id" : "6515f617.10e1",
-      "func" : "msg.payload.body = msg.payload.body.replace(\"\\\\n\",\"\\n\");\nreturn msg;",
+      "outputs" : 1,
       "noerr" : 0,
-      "outputs" : 1
+      "type" : "function",
+      "z" : "e848a67.5dfd858",
+      "name" : "выправить текст"
    },
    {
-      "rules" : [
-         {
-            "vt" : "global",
-            "v" : "golos.account",
-            "t" : "neq"
-         }
-      ],
-      "property" : "payload.author",
-      "propertyType" : "msg",
-      "id" : "a0fad3f6.d28298",
       "checkall" : "false",
-      "outputs" : 1,
       "x" : 642.566650390625,
-      "name" : "не автор",
-      "z" : "e848a67.5dfd858",
-      "type" : "switch",
+      "property" : "payload.author",
       "wires" : [
          [
             "6515f617.10e1"
          ]
       ],
-      "y" : 183.566665649414
+      "rules" : [
+         {
+            "vt" : "global",
+            "t" : "neq",
+            "v" : "golos.account"
+         }
+      ],
+      "id" : "a0fad3f6.d28298",
+      "y" : 183.566665649414,
+      "type" : "switch",
+      "outputs" : 1,
+      "propertyType" : "msg",
+      "name" : "не автор",
+      "z" : "e848a67.5dfd858"
    },
    {
-      "id" : "4ae43a0b.aa372c",
+      "type" : "subflow",
       "out" : [
          {
             "wires" : [
@@ -315,19 +308,17 @@
                   "id" : "b38cd1a8.53e6e"
                },
                {
-                  "id" : "91b34184.60883",
-                  "port" : 0
+                  "port" : 0,
+                  "id" : "91b34184.60883"
                }
             ],
             "y" : 108,
             "x" : 1046
          }
       ],
-      "type" : "subflow",
       "in" : [
          {
             "x" : 60,
-            "y" : 110,
             "wires" : [
                {
                   "id" : "6b6e3782.846a88"
@@ -335,190 +326,191 @@
                {
                   "id" : "d5c744a6.7525c"
                }
-            ]
+            ],
+            "y" : 110
          }
       ],
-      "name" : "Golos конвертация ",
-      "info" : ""
+      "id" : "4ae43a0b.aa372c",
+      "info" : "",
+      "name" : "Golos конвертация "
    },
    {
-      "x" : 280,
-      "name" : "vesting_payout",
       "z" : "4ae43a0b.aa372c",
+      "name" : "vesting_payout",
+      "propertyType" : "msg",
+      "outputs" : 1,
       "type" : "switch",
+      "y" : 76.7833404541016,
       "wires" : [
          [
             "b38cd1a8.53e6e"
          ]
       ],
-      "y" : 76.7833404541016,
       "rules" : [
          {
             "t" : "nnull"
          }
       ],
-      "property" : "payload.vesting_payout",
-      "propertyType" : "msg",
       "id" : "6b6e3782.846a88",
+      "property" : "payload.vesting_payout",
       "checkall" : "true",
-      "outputs" : 1
+      "x" : 280
    },
    {
-      "id" : "b38cd1a8.53e6e",
       "outputs" : 1,
-      "noerr" : 0,
-      "func" : "var val = msg.payload.vesting_payout;\nval = val.replace(\" GESTS\", \"\");\nval = parseFloat(val) / 1000000.0;\nmsg.payload.vesting_payout = val.toFixed(6) + \" GESTS\";\nreturn msg;",
       "type" : "function",
+      "noerr" : 0,
+      "z" : "4ae43a0b.aa372c",
+      "name" : "Convert vesting payout",
+      "func" : "var val = msg.payload.vesting_payout;\nval = val.replace(\" GESTS\", \"\");\nval = parseFloat(val) / 1000000.0;\nmsg.payload.vesting_payout = val.toFixed(6) + \" GESTS\";\nreturn msg;",
+      "x" : 536,
+      "y" : 75.2833404541016,
       "wires" : [
          []
       ],
-      "y" : 75.2833404541016,
-      "name" : "Convert vesting payout",
-      "x" : 536,
-      "z" : "4ae43a0b.aa372c"
+      "id" : "b38cd1a8.53e6e"
    },
    {
-      "checkall" : "true",
+      "propertyType" : "msg",
+      "name" : "reward",
+      "z" : "4ae43a0b.aa372c",
+      "type" : "switch",
       "outputs" : 1,
       "id" : "d5c744a6.7525c",
-      "property" : "payload.reward",
-      "propertyType" : "msg",
+      "wires" : [
+         [
+            "91b34184.60883"
+         ]
+      ],
       "rules" : [
          {
             "t" : "nnull"
          }
       ],
       "y" : 172.75,
-      "type" : "switch",
-      "wires" : [
-         [
-            "91b34184.60883"
-         ]
-      ],
-      "z" : "4ae43a0b.aa372c",
+      "checkall" : "true",
       "x" : 222.75,
-      "name" : "reward"
+      "property" : "payload.reward"
    },
    {
-      "noerr" : 0,
-      "func" : "var val = msg.payload.reward;\nval = val.replace(\" GESTS\", \"\");\nval = parseFloat(val) / 1000000.0;\nmsg.payload.reward = val.toFixed(6) + \" GESTS\";\nreturn msg;",
-      "outputs" : 1,
       "id" : "91b34184.60883",
-      "y" : 164.75,
       "wires" : [
          []
       ],
-      "type" : "function",
-      "z" : "4ae43a0b.aa372c",
+      "y" : 164.75,
       "x" : 519.75,
-      "name" : "Convert reward"
+      "func" : "var val = msg.payload.reward;\nval = val.replace(\" GESTS\", \"\");\nval = parseFloat(val) / 1000000.0;\nmsg.payload.reward = val.toFixed(6) + \" GESTS\";\nreturn msg;",
+      "name" : "Convert reward",
+      "z" : "4ae43a0b.aa372c",
+      "noerr" : 0,
+      "type" : "function",
+      "outputs" : 1
    },
    {
       "in" : [
          {
+            "x" : 80,
+            "y" : 178,
             "wires" : [
                {
                   "id" : "d8a23c2f.c23008"
                }
-            ],
-            "y" : 178,
-            "x" : 80
+            ]
          }
       ],
+      "info" : "",
       "id" : "5b07baad.357b24",
+      "name" : "vote",
       "out" : [
          {
+            "x" : 847,
             "y" : 157,
             "wires" : [
                {
                   "id" : "3d9e211d.f6ac86",
                   "port" : 0
                }
-            ],
-            "x" : 847
+            ]
          }
       ],
-      "type" : "subflow",
-      "name" : "vote",
-      "info" : ""
+      "type" : "subflow"
    },
    {
+      "reg" : false,
+      "z" : "5b07baad.357b24",
+      "from" : "",
+      "name" : "vote",
       "action" : "",
+      "type" : "change",
+      "y" : 131.75,
       "wires" : [
          [
             "ef4f8c41.043d9"
          ]
       ],
-      "type" : "change",
-      "reg" : false,
-      "y" : 131.75,
-      "name" : "vote",
-      "x" : 240.75,
-      "z" : "5b07baad.357b24",
-      "from" : "",
-      "id" : "d8a23c2f.c23008",
       "rules" : [
          {
-            "pt" : "msg",
-            "tot" : "msg",
             "t" : "set",
+            "tot" : "msg",
             "to" : "payload[1]",
+            "pt" : "msg",
             "p" : "payload"
          },
          {
+            "t" : "set",
+            "tot" : "jsonata",
             "pt" : "msg",
             "to" : "msg.payload.weight / 100",
-            "t" : "set",
-            "p" : "payload.weight",
-            "tot" : "jsonata"
+            "p" : "payload.weight"
          }
       ],
-      "to" : "",
-      "property" : ""
+      "id" : "d8a23c2f.c23008",
+      "property" : "",
+      "x" : 240.75,
+      "to" : ""
    },
    {
-      "y" : 129.516662597656,
+      "outputs" : 1,
       "type" : "switch",
+      "z" : "5b07baad.357b24",
+      "name" : "автор ",
+      "propertyType" : "msg",
+      "property" : "payload.author",
+      "checkall" : "true",
+      "x" : 425.75,
+      "y" : 129.516662597656,
+      "id" : "ef4f8c41.043d9",
+      "rules" : [
+         {
+            "t" : "eq",
+            "vt" : "global",
+            "v" : "golos.account"
+         }
+      ],
       "wires" : [
          [
             "3d9e211d.f6ac86"
          ]
-      ],
-      "z" : "5b07baad.357b24",
-      "name" : "автор ",
-      "x" : 425.75,
-      "outputs" : 1,
-      "checkall" : "true",
-      "id" : "ef4f8c41.043d9",
-      "property" : "payload.author",
-      "propertyType" : "msg",
-      "rules" : [
-         {
-            "v" : "golos.account",
-            "vt" : "global",
-            "t" : "eq"
-         }
       ]
    },
    {
       "syntax" : "mustache",
-      "y" : 130.766662597656,
       "type" : "template",
-      "wires" : [
-         []
-      ],
-      "template" : "<b>{{payload.voter}}</b> проголосовал за вас с весом {{payload.weight}}%",
       "fieldType" : "msg",
       "z" : "5b07baad.357b24",
-      "x" : 667.416625976562,
       "name" : "Проголосовал",
-      "id" : "3d9e211d.f6ac86",
+      "format" : "handlebars",
+      "x" : 667.416625976562,
+      "template" : "<b>{{payload.voter}}</b> проголосовал за вас с весом {{payload.weight}}%",
+      "y" : 130.766662597656,
       "field" : "payload",
-      "format" : "handlebars"
+      "id" : "3d9e211d.f6ac86",
+      "wires" : [
+         []
+      ]
    },
    {
-      "name" : "History Messenger",
-      "info" : "",
+      "type" : "subflow",
       "in" : [
          {
             "wires" : [
@@ -530,93 +522,32 @@
             "x" : 26
          }
       ],
+      "name" : "History Messenger",
+      "info" : "",
       "id" : "b22759ec.9edca8",
       "out" : [
          {
+            "x" : 1323,
             "y" : 202,
             "wires" : [
                {
-                  "port" : 0,
-                  "id" : "a8183229.048e"
-               },
-               {
-                  "port" : 0,
-                  "id" : "99e07d5.865d2"
-               },
-               {
-                  "id" : "1c158978.073b9f",
-                  "port" : 0
-               }
-            ],
-            "x" : 1323
-         },
-         {
-            "wires" : [
-               {
-                  "id" : "a657256f.0aa55",
+                  "id" : "a8183229.048e",
                   "port" : 0
                },
                {
-                  "id" : "a657256f.0aa55",
-                  "port" : 1
+                  "id" : "99e07d5.865d2",
+                  "port" : 0
+               },
+               {
+                  "port" : 0,
+                  "id" : "1c158978.073b9f"
                }
-            ],
-            "y" : 508.999984741211,
-            "x" : 526
+            ]
          }
-      ],
-      "type" : "subflow"
+      ]
    },
    {
-      "y" : 481.066665649414,
-      "type" : "telegram receiver",
-      "wires" : [
-         [],
-         []
-      ],
-      "z" : "b22759ec.9edca8",
-      "x" : 364.566650390625,
-      "name" : "Голос Бот",
-      "id" : "a657256f.0aa55",
-      "bot" : "a5fade02.7f0158",
-      "saveDataDir" : ""
-   },
-   {
-      "rules" : [
-         {
-            "v" : "vote",
-            "vt" : "str",
-            "t" : "eq"
-         },
-         {
-            "vt" : "str",
-            "v" : "comment",
-            "t" : "eq"
-         },
-         {
-            "t" : "eq",
-            "vt" : "str",
-            "v" : "transfer"
-         },
-         {
-            "v" : "curation_reward",
-            "vt" : "str",
-            "t" : "eq"
-         },
-         {
-            "vt" : "str",
-            "v" : "author_reward",
-            "t" : "eq"
-         }
-      ],
-      "property" : "payload[0]",
-      "propertyType" : "msg",
-      "id" : "1100fbba.c6a72c",
-      "outputs" : 5,
-      "checkall" : "false",
-      "x" : 155.566619873047,
-      "name" : "Диспетчер",
-      "z" : "b22759ec.9edca8",
+      "y" : 131.016647338867,
       "wires" : [
          [
             "99e07d5.865d2"
@@ -634,55 +565,84 @@
             "8f733fea.9c1c18"
          ]
       ],
-      "type" : "switch",
-      "y" : 131.016647338867
+      "rules" : [
+         {
+            "v" : "vote",
+            "vt" : "str",
+            "t" : "eq"
+         },
+         {
+            "vt" : "str",
+            "t" : "eq",
+            "v" : "comment"
+         },
+         {
+            "v" : "transfer",
+            "t" : "eq",
+            "vt" : "str"
+         },
+         {
+            "t" : "eq",
+            "vt" : "str",
+            "v" : "curation_reward"
+         },
+         {
+            "v" : "author_reward",
+            "vt" : "str",
+            "t" : "eq"
+         }
+      ],
+      "id" : "1100fbba.c6a72c",
+      "property" : "payload[0]",
+      "x" : 155.566619873047,
+      "checkall" : "false",
+      "z" : "b22759ec.9edca8",
+      "propertyType" : "msg",
+      "name" : "Диспетчер",
+      "outputs" : 5,
+      "type" : "switch"
    },
    {
-      "z" : "b22759ec.9edca8",
-      "from" : "",
-      "name" : "transfer",
       "x" : 491.983276367188,
-      "y" : 255.116653442383,
-      "reg" : false,
-      "action" : "",
-      "type" : "change",
+      "to" : "",
+      "property" : "",
+      "id" : "924f28e4.7e98d",
+      "rules" : [
+         {
+            "tot" : "msg",
+            "t" : "set",
+            "p" : "payload",
+            "pt" : "msg",
+            "to" : "payload[1]"
+         }
+      ],
       "wires" : [
          [
             "5fc2a019.355418"
          ]
       ],
-      "to" : "",
-      "property" : "",
-      "rules" : [
-         {
-            "pt" : "msg",
-            "p" : "payload",
-            "to" : "payload[1]",
-            "t" : "set",
-            "tot" : "msg"
-         }
-      ],
-      "id" : "924f28e4.7e98d"
+      "y" : 255.116653442383,
+      "type" : "change",
+      "action" : "",
+      "name" : "transfer",
+      "from" : "",
+      "z" : "b22759ec.9edca8",
+      "reg" : false
    },
    {
-      "id" : "5fc2a019.355418",
-      "checkall" : "true",
-      "outputs" : 2,
+      "y" : 271.516662597656,
       "rules" : [
          {
-            "vt" : "str",
-            "v" : "ropox",
-            "t" : "eq"
+            "t" : "eq",
+            "vt" : "global",
+            "v" : "golos.account"
          },
          {
-            "v" : "ropox",
+            "t" : "neq",
             "vt" : "str",
-            "t" : "neq"
+            "v" : "golos.account"
          }
       ],
-      "property" : "payload.from",
-      "propertyType" : "msg",
-      "type" : "switch",
       "wires" : [
          [
             "1e59cca8.260a4b"
@@ -691,693 +651,719 @@
             "b90c831a.997258"
          ]
       ],
-      "y" : 273.516647338867,
-      "name" : "",
-      "x" : 651.233276367188,
+      "id" : "5fc2a019.355418",
+      "property" : "payload.from",
+      "x" : 655.233276367188,
+      "checkall" : "true",
+      "z" : "b22759ec.9edca8",
+      "propertyType" : "msg",
+      "name" : "Вы/Не вы",
+      "outputs" : 2,
+      "type" : "switch"
+   },
+   {
+      "name" : "Вы перевели",
+      "z" : "b22759ec.9edca8",
+      "fieldType" : "msg",
+      "type" : "template",
+      "syntax" : "mustache",
+      "wires" : [
+         [
+            "1c158978.073b9f"
+         ]
+      ],
+      "id" : "1e59cca8.260a4b",
+      "field" : "payload",
+      "y" : 254.116653442383,
+      "template" : "Вы перевели {{payload.amount}} участнику <b>{{payload.to}}</b>",
+      "x" : 840.983276367188,
+      "format" : "handlebars"
+   },
+   {
+      "template" : "<b>{{payload.from}}</b> перевел вам {{payload.amount}}",
+      "x" : 850.983276367188,
+      "format" : "handlebars",
+      "wires" : [
+         [
+            "1c158978.073b9f"
+         ]
+      ],
+      "id" : "b90c831a.997258",
+      "field" : "payload",
+      "y" : 315.116638183594,
+      "type" : "template",
+      "syntax" : "mustache",
+      "name" : "Вам перевели",
+      "fieldType" : "msg",
       "z" : "b22759ec.9edca8"
    },
    {
-      "format" : "handlebars",
-      "field" : "payload",
-      "id" : "1e59cca8.260a4b",
-      "x" : 808.983276367188,
-      "name" : "Вы перевели",
+      "action" : "",
+      "type" : "change",
+      "from" : "",
       "z" : "b22759ec.9edca8",
-      "type" : "template",
-      "wires" : [
-         [
-            "1c158978.073b9f"
-         ]
-      ],
-      "template" : "Вы перевели {{payload.amount}} участнику <b>{{payload.to}}</b>",
-      "fieldType" : "msg",
-      "syntax" : "mustache",
-      "y" : 254.116653442383
-   },
-   {
-      "format" : "handlebars",
-      "field" : "payload",
-      "id" : "b90c831a.997258",
-      "z" : "b22759ec.9edca8",
-      "name" : "Вам перевели",
-      "x" : 817.983276367188,
-      "syntax" : "mustache",
-      "y" : 307.116653442383,
-      "fieldType" : "msg",
-      "wires" : [
-         [
-            "1c158978.073b9f"
-         ]
-      ],
-      "type" : "template",
-      "template" : "<b>{{payload.from}}</b> перевел вам {{payload.amount}}"
-   },
-   {
-      "id" : "e9234685.64ec98",
-      "rules" : [
-         {
-            "pt" : "msg",
-            "tot" : "msg",
-            "p" : "payload",
-            "t" : "set",
-            "to" : "payload[1]"
-         }
-      ],
+      "reg" : false,
+      "name" : "curation_reward",
       "property" : "",
       "to" : "",
+      "x" : 358.983276367188,
+      "y" : 333.11669921875,
+      "id" : "e9234685.64ec98",
       "wires" : [
          [
             "214c2e51.faf502"
          ]
       ],
-      "type" : "change",
-      "action" : "",
-      "y" : 333.11669921875,
-      "reg" : false,
-      "x" : 358.983276367188,
-      "name" : "curation_reward",
-      "from" : "",
-      "z" : "b22759ec.9edca8"
+      "rules" : [
+         {
+            "tot" : "msg",
+            "t" : "set",
+            "p" : "payload",
+            "to" : "payload[1]",
+            "pt" : "msg"
+         }
+      ]
    },
    {
-      "id" : "b60f3e73.2efe3",
-      "format" : "handlebars",
-      "field" : "payload",
-      "syntax" : "mustache",
-      "y" : 358.116683959961,
+      "z" : "b22759ec.9edca8",
       "fieldType" : "msg",
+      "name" : "Награда за кураторство",
+      "syntax" : "mustache",
+      "type" : "template",
+      "field" : "payload",
+      "y" : 358.116683959961,
       "wires" : [
          [
             "1c158978.073b9f"
          ]
       ],
-      "type" : "template",
+      "id" : "b60f3e73.2efe3",
+      "format" : "handlebars",
       "template" : "Вы получили {{payload.reward}} за кураторство.\n<a href=\"{{payload.host}}/@{{payload.comment_author}}/{{payload.comment_permlink}}\">Тема</a>\n",
-      "z" : "b22759ec.9edca8",
-      "name" : "Награда за кураторство",
       "x" : 837.983245849609
    },
    {
-      "id" : "8f733fea.9c1c18",
-      "rules" : [
-         {
-            "tot" : "msg",
-            "t" : "set",
-            "to" : "payload[1]",
-            "p" : "payload",
-            "pt" : "msg"
-         },
-         {
-            "to" : "msg.payload.vesting_payout / 1000000.0",
-            "t" : "set",
-            "p" : "payload.vesting_payout",
-            "tot" : "jsonata",
-            "pt" : "msg"
-         }
-      ],
-      "property" : "",
-      "to" : "",
+      "action" : "",
       "type" : "change",
+      "reg" : false,
+      "z" : "b22759ec.9edca8",
+      "from" : "",
+      "name" : "author_reward",
+      "property" : "",
+      "x" : 344.983276367188,
+      "to" : "",
+      "y" : 398.11669921875,
       "wires" : [
          [
             "eecec295.2e95c"
          ]
       ],
-      "action" : "",
-      "y" : 398.11669921875,
-      "reg" : false,
-      "x" : 344.983276367188,
-      "name" : "author_reward",
-      "from" : "",
-      "z" : "b22759ec.9edca8"
+      "rules" : [
+         {
+            "pt" : "msg",
+            "to" : "payload[1]",
+            "p" : "payload",
+            "t" : "set",
+            "tot" : "msg"
+         },
+         {
+            "p" : "payload.vesting_payout",
+            "pt" : "msg",
+            "to" : "msg.payload.vesting_payout / 1000000.0",
+            "tot" : "jsonata",
+            "t" : "set"
+         }
+      ],
+      "id" : "8f733fea.9c1c18"
    },
    {
-      "id" : "9dd12cf8.e825d",
+      "template" : "Вы получили {{payload.sbd_payout}} и {{payload.vesting_payout}} авторского вознаграждения.\n<a href=\"{{payload.host}}/@{{payload.author}}/{{payload.permlink}}\">Тема</a>",
+      "x" : 838.983245849609,
       "format" : "handlebars",
-      "field" : "payload",
-      "fieldType" : "msg",
-      "type" : "template",
       "wires" : [
          [
             "1c158978.073b9f"
          ]
       ],
-      "template" : "Вы получили {{payload.sbd_payout}} и {{payload.vesting_payout}} авторского вознаграждения.\n<a href=\"{{payload.host}}/@{{payload.author}}/{{payload.permlink}}\">Тема</a>",
+      "id" : "9dd12cf8.e825d",
+      "field" : "payload",
       "y" : 404.116683959961,
+      "type" : "template",
       "syntax" : "mustache",
       "name" : "Авторское вознаграждение",
-      "x" : 838.983245849609,
-      "z" : "b22759ec.9edca8"
+      "z" : "b22759ec.9edca8",
+      "fieldType" : "msg"
    },
    {
-      "outputs" : 1,
-      "noerr" : 0,
-      "func" : "msg.payload = msg.payload.replace(\"GESTS\", \"силы голоса\");\nmsg.payload = msg.payload.replace(\"GBG\", \"золотых\");\nmsg.payload = msg.payload.replace(\"GOLOS\", \"голосов\");\nreturn msg;",
-      "id" : "1c158978.073b9f",
-      "z" : "b22759ec.9edca8",
-      "name" : "переводчик валюты",
-      "x" : 1123.23327636719,
-      "y" : 320.266647338867,
       "wires" : [
          []
       ],
-      "type" : "function"
+      "id" : "1c158978.073b9f",
+      "y" : 320.266647338867,
+      "x" : 1123.23327636719,
+      "func" : "msg.payload = msg.payload.replace(\"GESTS\", \"силы голоса\");\nmsg.payload = msg.payload.replace(\"GBG\", \"золотых\");\nmsg.payload = msg.payload.replace(\"GOLOS\", \"голосов\");\nreturn msg;",
+      "name" : "переводчик валюты",
+      "z" : "b22759ec.9edca8",
+      "type" : "function",
+      "noerr" : 0,
+      "outputs" : 1
    },
    {
+      "z" : "b22759ec.9edca8",
       "y" : 106.999984741211,
       "id" : "99e07d5.865d2",
-      "type" : "subflow:5b07baad.357b24",
       "wires" : [
          []
       ],
-      "z" : "b22759ec.9edca8",
-      "x" : 737.233245849609
+      "x" : 737.233245849609,
+      "type" : "subflow:5b07baad.357b24"
    },
    {
-      "id" : "214c2e51.faf502",
+      "x" : 593.566619873047,
       "type" : "subflow:4ae43a0b.aa372c",
+      "z" : "b22759ec.9edca8",
+      "y" : 358.633285522461,
+      "id" : "214c2e51.faf502",
       "wires" : [
          [
             "b60f3e73.2efe3"
          ]
-      ],
-      "y" : 358.633285522461,
-      "x" : 593.566619873047,
-      "z" : "b22759ec.9edca8"
+      ]
    },
    {
       "x" : 580.566619873047,
+      "type" : "subflow:4ae43a0b.aa372c",
+      "y" : 406.633285522461,
       "z" : "b22759ec.9edca8",
       "id" : "eecec295.2e95c",
-      "type" : "subflow:4ae43a0b.aa372c",
       "wires" : [
          [
             "9dd12cf8.e825d"
          ]
-      ],
-      "y" : 406.633285522461
+      ]
    },
    {
-      "id" : "a8183229.048e",
+      "x" : 708.566619873047,
       "type" : "subflow:e848a67.5dfd858",
+      "y" : 171.633316040039,
+      "z" : "b22759ec.9edca8",
+      "id" : "a8183229.048e",
       "wires" : [
          []
-      ],
-      "y" : 171.633316040039,
-      "x" : 708.566619873047,
-      "z" : "b22759ec.9edca8"
+      ]
    },
    {
-      "botname" : "голос бот",
-      "id" : "a5fade02.7f0158",
-      "type" : "telegram bot",
-      "usernames" : "[]",
-      "z" : "",
-      "chatids" : "[]"
-   },
-   {
-      "info" : "",
-      "name" : "Golos Client",
       "in" : [
          {
+            "x" : 273,
             "wires" : [
                {
                   "id" : "1438ed61.4a43db"
                }
             ],
-            "y" : 45,
-            "x" : 273
+            "y" : 45
          }
       ],
-      "type" : "subflow",
+      "info" : "",
       "id" : "3aaa3d51.eeb122",
+      "name" : "Golos Client",
       "out" : [
          {
-            "x" : 842,
             "y" : 277,
             "wires" : [
                {
                   "port" : 0,
                   "id" : "47c2222e.269f74"
                }
-            ]
+            ],
+            "x" : 842
          }
-      ]
+      ],
+      "type" : "subflow"
    },
    {
-      "to" : "",
       "property" : "",
+      "x" : 584.75,
+      "to" : "",
+      "y" : 126.766662597656,
+      "id" : "1438ed61.4a43db",
       "rules" : [
          {
             "tot" : "json",
-            "p" : "payload",
-            "to" : "{\"id\":21,\"method\":\"get_account_history\",\"params\":[\"ropox\",\"-1\",\"25\"]}",
             "t" : "set",
-            "pt" : "msg"
+            "p" : "payload",
+            "pt" : "msg",
+            "to" : "{\"id\":21,\"method\":\"get_account_history\",\"params\":[\"ropox\",\"-1\",\"25\"]}"
          },
          {
-            "tot" : "global",
-            "p" : "payload.params[0]",
             "t" : "set",
+            "tot" : "global",
             "to" : "golos.account",
-            "pt" : "msg"
+            "pt" : "msg",
+            "p" : "payload.params[0]"
          }
       ],
-      "id" : "1438ed61.4a43db",
-      "z" : "3aaa3d51.eeb122",
-      "from" : "",
-      "name" : "get_account_history(ropox)",
-      "x" : 604.75,
-      "y" : 126.766662597656,
-      "reg" : false,
-      "action" : "",
       "wires" : [
          [
             "67c4b1b9.3d864"
          ]
       ],
-      "type" : "change"
+      "action" : "",
+      "type" : "change",
+      "z" : "3aaa3d51.eeb122",
+      "from" : "",
+      "reg" : false,
+      "name" : "get_account_history"
    },
    {
-      "x" : 894.75,
+      "type" : "websocket out",
+      "z" : "3aaa3d51.eeb122",
       "name" : "golos.io API",
       "server" : "",
-      "z" : "3aaa3d51.eeb122",
-      "wires" : [],
-      "type" : "websocket out",
+      "x" : 894.75,
       "y" : 126.383331298828,
+      "wires" : [],
       "client" : "54ef327e.c7dd74",
       "id" : "67c4b1b9.3d864"
    },
    {
-      "client" : "54ef327e.c7dd74",
-      "id" : "3bf276e9.0e189a",
-      "x" : 327.75,
-      "name" : "golos.io API",
-      "server" : "",
-      "z" : "3aaa3d51.eeb122",
       "type" : "websocket in",
+      "name" : "golos.io API",
+      "z" : "3aaa3d51.eeb122",
+      "x" : 327.75,
+      "server" : "",
+      "id" : "3bf276e9.0e189a",
       "wires" : [
          [
             "26d557a5.99a32"
          ]
       ],
+      "client" : "54ef327e.c7dd74",
       "y" : 278.75
    },
    {
-      "id" : "26d557a5.99a32",
+      "type" : "json",
+      "x" : 498.75,
+      "y" : 279.149993896484,
+      "z" : "3aaa3d51.eeb122",
       "wires" : [
          [
             "47c2222e.269f74"
          ]
       ],
-      "type" : "json",
-      "y" : 279.149993896484,
       "name" : "",
-      "x" : 498.75,
-      "z" : "3aaa3d51.eeb122"
+      "id" : "26d557a5.99a32"
    },
    {
-      "id" : "47c2222e.269f74",
-      "outputs" : 1,
-      "checkall" : "true",
-      "rules" : [
-         {
-            "v" : "21",
-            "vt" : "str",
-            "t" : "eq"
-         }
-      ],
+      "z" : "3aaa3d51.eeb122",
       "propertyType" : "msg",
-      "property" : "payload.id",
+      "name" : "",
+      "outputs" : 1,
       "type" : "switch",
+      "y" : 277.899993896484,
+      "id" : "47c2222e.269f74",
       "wires" : [
          []
       ],
-      "y" : 277.899993896484,
-      "name" : "",
-      "x" : 664.75,
-      "z" : "3aaa3d51.eeb122"
+      "rules" : [
+         {
+            "t" : "eq",
+            "vt" : "str",
+            "v" : "21"
+         }
+      ],
+      "property" : "payload.id",
+      "checkall" : "true",
+      "x" : 664.75
    },
    {
-      "type" : "websocket-client",
-      "id" : "54ef327e.c7dd74",
       "wholemsg" : "false",
+      "z" : "",
+      "id" : "54ef327e.c7dd74",
       "path" : "wss://ws.golos.io",
-      "z" : ""
+      "type" : "websocket-client"
    },
    {
+      "x" : 441,
+      "type" : "subflow:3aaa3d51.eeb122",
+      "y" : 249.633316040039,
+      "z" : "ed74627b.f39e7",
+      "id" : "d7a88873.6f9ab8",
+      "name" : "",
       "wires" : [
          [
             "a060fd48.59e178",
             "1d7d48e4.b3c217",
             "e886ee9c.949ae8"
          ]
-      ],
-      "type" : "subflow:3aaa3d51.eeb122",
-      "id" : "d7a88873.6f9ab8",
-      "y" : 249.633316040039,
-      "x" : 441,
-      "name" : "",
-      "z" : "ed74627b.f39e7"
+      ]
    },
    {
-      "z" : "ed74627b.f39e7",
-      "name" : "Голос Бот",
-      "x" : 1159.56665039062,
       "y" : 446.566650390625,
       "wires" : [
          []
       ],
-      "type" : "telegram sender",
+      "id" : "f6facd92.62fa28",
+      "x" : 1159.56665039062,
+      "z" : "ed74627b.f39e7",
+      "name" : "Голос Бот",
       "bot" : "a5fade02.7f0158",
-      "id" : "f6facd92.62fa28"
+      "type" : "telegram sender"
    },
    {
-      "payloadType" : "date",
-      "crontab" : "",
+      "once" : true,
+      "payload" : "",
+      "topic" : "",
+      "type" : "inject",
       "z" : "ed74627b.f39e7",
       "repeat" : "5",
-      "x" : 105.16667175293,
-      "once" : true,
+      "crontab" : "",
       "name" : "Стартёр",
+      "payloadType" : "date",
+      "x" : 105.16667175293,
       "y" : 137.20002746582,
-      "payload" : "",
-      "type" : "inject",
+      "id" : "402ea242.c24a24",
       "wires" : [
          [
             "90a24d5f.019e1"
          ]
-      ],
-      "topic" : "",
-      "id" : "402ea242.c24a24"
+      ]
    },
    {
-      "y" : 190.633316040039,
-      "reg" : false,
-      "action" : "",
       "type" : "change",
+      "action" : "",
+      "name" : "Ностройки",
+      "from" : "",
+      "z" : "ed74627b.f39e7",
+      "reg" : false,
+      "to" : "",
+      "x" : 275.166625976562,
+      "property" : "",
+      "id" : "90a24d5f.019e1",
+      "rules" : [
+         {
+            "tot" : "json",
+            "t" : "set",
+            "p" : "golos",
+            "to" : "{\"account\":\"ropox\",\"chatId\":\"\",\"host\":\"https://golos.io/golos\"}",
+            "pt" : "global"
+         },
+         {
+            "pt" : "global",
+            "to" : "ropox",
+            "p" : "golos.account",
+            "t" : "set",
+            "tot" : "str"
+         },
+         {
+            "to" : "",
+            "pt" : "global",
+            "p" : "golos.chatId",
+            "t" : "set",
+            "tot" : "str"
+         },
+         {
+            "p" : "golos.host",
+            "pt" : "global",
+            "to" : "https://golos.io/golos",
+            "tot" : "str",
+            "t" : "set"
+         }
+      ],
       "wires" : [
          [
             "d7a88873.6f9ab8"
          ]
       ],
-      "z" : "ed74627b.f39e7",
-      "from" : "",
-      "name" : "Ностройки",
-      "x" : 275.166625976562,
-      "id" : "90a24d5f.019e1",
-      "to" : "",
-      "property" : "",
-      "rules" : [
-         {
-            "tot" : "json",
-            "t" : "set",
-            "to" : "{\"account\":\"ropox\",\"chatId\":\"\",\"host\":\"https://golos.io/golos\"}",
-            "p" : "golos",
-            "pt" : "global"
-         },
-         {
-            "pt" : "global",
-            "p" : "golos.account",
-            "to" : "ropox",
-            "t" : "set",
-            "tot" : "str"
-         },
-         {
-            "pt" : "global",
-            "tot" : "str",
-            "t" : "set",
-            "to" : "",
-            "p" : "golos.chatId"
-         },
-         {
-            "tot" : "str",
-            "p" : "golos.host",
-            "to" : "https://golos.io/golos",
-            "t" : "set",
-            "pt" : "global"
-         }
-      ]
+      "y" : 190.633316040039
    },
    {
-      "y" : 343.566650390625,
       "wires" : [
          [
             "f16837f.3596bc8",
             "35f7054c.c9ef2a"
-         ],
-         []
+         ]
       ],
-      "type" : "subflow:b22759ec.9edca8",
       "id" : "6462f35f.8d6204",
+      "y" : 343.566650390625,
       "z" : "ed74627b.f39e7",
+      "type" : "subflow:b22759ec.9edca8",
       "x" : 761.566650390625
    },
    {
-      "y" : 298.049987792969,
-      "type" : "subflow:698a5e08.63849",
+      "name" : "",
+      "id" : "a060fd48.59e178",
       "wires" : [
          [
             "6462f35f.8d6204",
             "690eec86.727a5c"
          ]
       ],
-      "id" : "a060fd48.59e178",
       "z" : "ed74627b.f39e7",
+      "y" : 298.049987792969,
       "x" : 582.166625976562,
-      "name" : ""
+      "type" : "subflow:698a5e08.63849"
    },
    {
-      "topic" : "",
-      "id" : "a68531ca.adf8",
-      "payloadType" : "num",
-      "crontab" : "",
       "z" : "ed74627b.f39e7",
       "repeat" : "",
-      "x" : 151.166641235352,
+      "crontab" : "",
       "name" : "",
+      "payloadType" : "num",
       "once" : false,
       "payload" : "1",
-      "y" : 435.066650390625,
+      "topic" : "",
       "type" : "inject",
+      "y" : 425.066650390625,
+      "id" : "a68531ca.adf8",
       "wires" : [
          [
             "121add18.cadd7b"
          ]
-      ]
+      ],
+      "x" : 154.166641235352
    },
    {
-      "action" : "",
-      "wires" : [
-         []
-      ],
-      "type" : "change",
-      "reg" : false,
-      "y" : 417.566650390625,
-      "name" : "Сохранить ID в кэше",
-      "x" : 354.566650390625,
-      "z" : "ed74627b.f39e7",
       "from" : "",
+      "z" : "ed74627b.f39e7",
+      "reg" : false,
+      "name" : "Сохранить ID в кэше",
+      "action" : "",
+      "type" : "change",
+      "y" : 417.566650390625,
       "id" : "121add18.cadd7b",
       "rules" : [
          {
-            "pt" : "global",
             "tot" : "msg",
-            "to" : "payload[0]",
             "t" : "set",
-            "p" : "golos_lastId"
+            "p" : "golos_lastId",
+            "to" : "payload[0]",
+            "pt" : "global"
          }
       ],
-      "to" : "",
-      "property" : ""
-   },
-   {
-      "type" : "debug",
-      "wires" : [],
-      "y" : 173.949996948242,
-      "x" : 658.166625976562,
-      "name" : "",
-      "z" : "ed74627b.f39e7",
-      "id" : "1d7d48e4.b3c217",
-      "active" : false,
-      "console" : "false",
-      "complete" : "false"
-   },
-   {
-      "type" : "debug",
-      "wires" : [],
-      "y" : 241.949996948242,
-      "x" : 743.166625976562,
-      "name" : "",
-      "z" : "ed74627b.f39e7",
-      "id" : "690eec86.727a5c",
-      "active" : false,
-      "console" : "false",
-      "complete" : "false"
-   },
-   {
+      "wires" : [
+         []
+      ],
       "property" : "",
       "to" : "",
-      "rules" : [
-         {
-            "pt" : "msg",
-            "tot" : "msg",
-            "p" : "message",
-            "t" : "set",
-            "to" : "payload"
-         },
-         {
-            "pt" : "msg",
-            "p" : "payload",
-            "to" : "{}",
-            "t" : "set",
-            "tot" : "json"
-         },
-         {
-            "p" : "payload.chatId",
-            "to" : "golos.chatId",
-            "t" : "set",
-            "tot" : "global",
-            "pt" : "msg"
-         },
-         {
-            "t" : "set",
-            "to" : "message",
-            "p" : "payload.type",
-            "tot" : "str",
-            "pt" : "msg"
-         },
-         {
-            "tot" : "msg",
-            "t" : "set",
-            "to" : "message",
-            "p" : "payload.content",
-            "pt" : "msg"
-         },
-         {
-            "to" : "{\"parse_mode\":\"HTML\"}",
-            "t" : "set",
-            "p" : "payload.options",
-            "tot" : "json",
-            "pt" : "msg"
-         }
-      ],
-      "id" : "f16837f.3596bc8",
-      "from" : "",
+      "x" : 354.566650390625
+   },
+   {
+      "complete" : "false",
+      "type" : "debug",
       "z" : "ed74627b.f39e7",
-      "x" : 966.566650390625,
-      "name" : "Сообщение Telegram",
-      "reg" : false,
+      "name" : "",
+      "x" : 658.166625976562,
+      "y" : 173.949996948242,
+      "active" : false,
+      "id" : "1d7d48e4.b3c217",
+      "wires" : [],
+      "console" : "false"
+   },
+   {
+      "type" : "debug",
+      "complete" : "false",
+      "name" : "",
+      "z" : "ed74627b.f39e7",
+      "x" : 743.166625976562,
+      "wires" : [],
+      "console" : "false",
+      "id" : "690eec86.727a5c",
+      "active" : false,
+      "y" : 241.949996948242
+   },
+   {
       "y" : 404.566650390625,
-      "type" : "change",
+      "id" : "f16837f.3596bc8",
       "wires" : [
          [
             "f6facd92.62fa28",
             "35f7054c.c9ef2a"
          ]
       ],
-      "action" : ""
+      "rules" : [
+         {
+            "pt" : "msg",
+            "to" : "payload",
+            "p" : "message",
+            "t" : "set",
+            "tot" : "msg"
+         },
+         {
+            "tot" : "json",
+            "t" : "set",
+            "p" : "payload",
+            "to" : "{}",
+            "pt" : "msg"
+         },
+         {
+            "tot" : "global",
+            "t" : "set",
+            "p" : "payload.chatId",
+            "pt" : "msg",
+            "to" : "golos.chatId"
+         },
+         {
+            "t" : "set",
+            "tot" : "str",
+            "to" : "message",
+            "pt" : "msg",
+            "p" : "payload.type"
+         },
+         {
+            "t" : "set",
+            "tot" : "msg",
+            "pt" : "msg",
+            "to" : "message",
+            "p" : "payload.content"
+         },
+         {
+            "t" : "set",
+            "tot" : "json",
+            "to" : "{\"parse_mode\":\"HTML\"}",
+            "pt" : "msg",
+            "p" : "payload.options"
+         }
+      ],
+      "property" : "",
+      "x" : 966.566650390625,
+      "to" : "",
+      "z" : "ed74627b.f39e7",
+      "from" : "",
+      "reg" : false,
+      "name" : "Сообщение Telegram",
+      "action" : "",
+      "type" : "change"
    },
    {
+      "y" : 293.016662597656,
       "active" : true,
       "id" : "35f7054c.c9ef2a",
-      "complete" : "false",
-      "console" : "false",
-      "y" : 293.016662597656,
       "wires" : [],
-      "type" : "debug",
+      "console" : "false",
+      "x" : 1148.16662597656,
       "z" : "ed74627b.f39e7",
       "name" : "",
-      "x" : 1148.16662597656
+      "complete" : "false",
+      "type" : "debug"
    },
    {
-      "wires" : [],
+      "z" : "ed74627b.f39e7",
+      "name" : "Для отладки сбросить счетчик записей",
+      "info" : "",
       "type" : "comment",
       "y" : 379.599975585938,
-      "name" : "Для отладки сбросить счетчик записей",
-      "x" : 243.166625976562,
-      "z" : "ed74627b.f39e7",
+      "wires" : [],
       "id" : "65c7cef0.3beb",
-      "info" : ""
+      "x" : 243.166625976562
    },
    {
-      "y" : 98.0166625976562,
-      "type" : "debug",
-      "wires" : [],
-      "z" : "ed74627b.f39e7",
-      "name" : "",
       "x" : 999.166625976562,
       "active" : true,
       "id" : "6c14675e.eed0c8",
+      "wires" : [],
+      "console" : "false",
+      "y" : 98.0166625976562,
+      "type" : "debug",
       "complete" : "false",
-      "console" : "false"
+      "name" : "",
+      "z" : "ed74627b.f39e7"
    },
    {
-      "z" : "ed74627b.f39e7",
-      "name" : "",
       "x" : 605.166625976562,
-      "y" : 105,
+      "checkall" : "true",
+      "property" : "payload.error",
+      "id" : "e886ee9c.949ae8",
       "wires" : [
          [
             "f425e782.97c4f8"
          ]
       ],
-      "type" : "switch",
-      "property" : "payload.error",
-      "propertyType" : "msg",
       "rules" : [
          {
             "t" : "nnull"
          }
       ],
-      "checkall" : "true",
+      "y" : 105,
+      "type" : "switch",
       "outputs" : 1,
-      "id" : "e886ee9c.949ae8"
+      "propertyType" : "msg",
+      "name" : "",
+      "z" : "ed74627b.f39e7"
    },
    {
-      "name" : "",
       "x" : 787.166625976562,
-      "z" : "ed74627b.f39e7",
-      "from" : "",
-      "action" : "",
+      "to" : "",
+      "property" : "",
+      "rules" : [
+         {
+            "p" : "payload",
+            "to" : "payload.error.message",
+            "pt" : "msg",
+            "tot" : "msg",
+            "t" : "set"
+         }
+      ],
       "wires" : [
          [
             "6c14675e.eed0c8"
          ]
       ],
-      "type" : "change",
+      "id" : "f425e782.97c4f8",
       "y" : 101.866668701172,
+      "type" : "change",
+      "action" : "",
+      "name" : "",
       "reg" : false,
-      "rules" : [
-         {
-            "pt" : "msg",
-            "tot" : "msg",
-            "p" : "payload",
-            "t" : "set",
-            "to" : "payload.error.message"
-         }
-      ],
-      "to" : "",
-      "property" : "",
-      "id" : "f425e782.97c4f8"
+      "from" : "",
+      "z" : "ed74627b.f39e7"
    },
    {
-      "type" : "comment",
-      "wires" : [],
       "y" : 45.3999938964844,
-      "x" : 884.166641235352,
-      "name" : "Сообщения об ошибках",
-      "z" : "ed74627b.f39e7",
+      "wires" : [],
       "id" : "1bc1c614.8506fa",
-      "info" : ""
+      "x" : 884.166641235352,
+      "z" : "ed74627b.f39e7",
+      "info" : "",
+      "name" : "Сообщения об ошибках",
+      "type" : "comment"
+   },
+   {
+      "bot" : "a5fade02.7f0158",
+      "type" : "telegram receiver",
+      "z" : "ed74627b.f39e7",
+      "name" : "Голос Бот",
+      "saveDataDir" : "",
+      "x" : 369.566650390625,
+      "y" : 493.566650390625,
+      "id" : "81d4149b.349818",
+      "wires" : [
+         [
+            "25239e95.247c82"
+         ],
+         [
+            "25239e95.247c82"
+         ]
+      ]
+   },
+   {
+      "x" : 594.166625976562,
+      "y" : 487.349975585938,
+      "wires" : [],
+      "console" : "false",
+      "active" : true,
+      "id" : "25239e95.247c82",
+      "complete" : "false",
+      "type" : "debug",
+      "z" : "ed74627b.f39e7",
+      "name" : ""
    },
    {
       "z" : "",
       "chatids" : "[]",
+      "id" : "a5fade02.7f0158",
       "botname" : "голос бот",
       "usernames" : "[]",
-      "type" : "telegram bot",
-      "id" : "a5fade02.7f0158"
+      "type" : "telegram bot"
    }
 ]
